@@ -18,7 +18,7 @@ export const Cast = () => {
 
       {!error && (
         <CssCast.Ul>
-          {cast &&
+          {cast && cast.length > 0 ? (
             cast.map(({ cast_id, character, name, profile_path }) => {
               return (
                 <li key={cast_id}>
@@ -30,10 +30,13 @@ export const Cast = () => {
                     }
                     alt={character}
                   />
-                  <p> character - {character}</p> <p>name - {name}</p>
+                  <p>character - {character}</p> <p>name - {name}</p>
                 </li>
               );
-            })}
+            })
+          ) : (
+            <div> not cast </div>
+          )}
         </CssCast.Ul>
       )}
     </div>

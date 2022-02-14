@@ -1,11 +1,12 @@
 //import styled from 'styled-components';
+import { Suspense } from 'react';
 import { Outlet, Link, useParams } from 'react-router-dom';
 import { Loader } from 'components';
 import { useNavigate, useLocation } from 'react-router-dom';
-// import { useEffect, useState } from 'react';
+//import { useEffect } from 'react';
 // import { getMovieDetailsById } from 'services';
 import { useFetchMovieDetails } from 'hooks';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import no_img from 'img/no_image.png';
 import {
   GoToBack,
@@ -23,18 +24,23 @@ import {
 export const MovieDetailsPage = () => {
   const { movieId } = useParams();
   const { movie, loading, error } = useFetchMovieDetails(movieId);
-  const [from, setFrom] = useState('null');
+  // const [from, setFrom] = useState('null');
 
   const navigate = useNavigate();
   const location = useLocation();
 
-  const fromL =
-    location.state?.from?.pathname + location.state?.from?.search || '/';
+  // const fromL =
+  //   location.state?.from?.pathname + location.state?.from?.search || '/';
+  // console.log(location);
 
-  useEffect(() => {
-    setFrom(fromL);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  const [from] = useState(
+    location.state?.from?.pathname + location.state?.from?.search || '/'
+  );
+
+  // useEffect(() => {
+  //   setFrom(fromL);
+  //   //// eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [fromL]);
   //console.log(movieId);
 
   // console.log(navigate);
@@ -97,7 +103,9 @@ export const MovieDetailsPage = () => {
               </li>
             </ul>
           </AdditionalInformation>
-          <Outlet />
+          <Suspense fallback="">
+            <Outlet />
+          </Suspense>
         </>
       )}
     </main>

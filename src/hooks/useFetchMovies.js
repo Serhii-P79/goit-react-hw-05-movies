@@ -39,7 +39,7 @@ export const useFetchMovieDetails = id => {
       setLoading(true);
       try {
         const results = await getMovieDetailsById(id);
-        console.log(results);
+     //   console.log(results);
         setMovie(results);
       } catch (error) {
         setError(error);
@@ -63,7 +63,7 @@ export const useFetchMovieCast = id => {
       setLoading(true);
       try {
         const results = await getMovieCredits(id);
-        console.log(results);
+   //     console.log(results);
         setMovieCredits(results);
       } catch (error) {
         setError(error);
@@ -87,7 +87,7 @@ export const useFetchMovieReviews = id => {
       setLoading(true);
       try {
         const results = await getMovieReviews(id);
-        console.log(results);
+   //     console.log(results);
         setMovieReviews(results);
       } catch (error) {
         setError(error);

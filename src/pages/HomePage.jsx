@@ -35,3 +35,5 @@ export const HomePage = () => {
     </main>
   );
 };
+
+// export { HomePage as default };
