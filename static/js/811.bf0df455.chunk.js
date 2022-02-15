@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkgoit_react_hw_05_movies=self.webpackChunkgoit_react_hw_05_movies||[]).push([[811],{5811:function(n,t,e){e.r(t),e.d(t,{CssCast:function(){return r}});var i,s,o=e(168),a=e(5751),r={Ul:a.ZP.ul(i||(i=(0,o.Z)(["\n    padding: 10px;\n    > :not(:last-child) {\n      margin-bottom: 20px;\n    }\n  "]))),Poster:a.ZP.img(s||(s=(0,o.Z)(["\n    height: 200px;\n  "])))}}}]);
+//# sourceMappingURL=811.bf0df455.chunk.js.map
