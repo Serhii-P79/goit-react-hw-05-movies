@@ -1,43 +1,29 @@
 import { lazy, Suspense } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
+import { Layout } from 'components';
 //import { Layout, Cast, Reviews } from 'components';
 //import { HomePage, MovieDetailsPage, MoviesPage } from 'pages';
 
-const MoviesPage = lazy(() =>
-  import('../../pages/MoviesPage').then(module => ({
-    default: module.MoviesPage,
-  }))
-);
+const сreateChankPage = pageName => {
+  return lazy(() =>
+    import(`../../pages/${pageName}.jsx`).then(module => ({
+      default: module[pageName],
+    }))
+  );
+};
+const сreateChankComponent = componentName => {
+  return lazy(() =>
+    import(`../${componentName}/${componentName}.jsx`).then(module => ({
+      default: module[componentName],
+    }))
+  );
+};
 
-const HomePage = lazy(() =>
-  import('../../pages/HomePage').then(module => ({
-    default: module.HomePage,
-  }))
-);
-
-const MovieDetailsPage = lazy(() =>
-  import('../../pages/MovieDetailsPage').then(module => ({
-    default: module.MovieDetailsPage,
-  }))
-);
-
-const Cast = lazy(() =>
-  import('../Cast/Cast').then(module => ({
-    default: module.Cast,
-  }))
-);
-
-const Layout = lazy(() =>
-  import('../Layout/Layout').then(module => ({
-    default: module.Layout,
-  }))
-);
-
-const Reviews = lazy(() =>
-  import('../Reviews/Reviews').then(module => ({
-    default: module.Reviews,
-  }))
-);
+const MoviesPage = сreateChankPage('MoviesPage');
+const HomePage = сreateChankPage('HomePage');
+const MovieDetailsPage = сreateChankPage('MovieDetailsPage');
+const Cast = сreateChankComponent('Cast');
+const Reviews = сreateChankComponent('Reviews');
 
 export const App = () => {
   return (
